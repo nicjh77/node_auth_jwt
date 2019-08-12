@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+
+# documents
+/doc.txt
+
+# secret
+/.env
+
+# db connection
+/knexfile.js
