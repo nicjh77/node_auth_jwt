@@ -51,7 +51,7 @@ app.use(parser.urlencoded({
 app.use(parser.json());
 
 app.get('/', (req, res) => {
-    res.send('Helll world');
+    res.send('Hello world');
 });
 
 app.post('/signup', (req, res) => {
@@ -99,7 +99,11 @@ app.get('/protected', passport.authenticate('jwt', {session: false}), (req, res)
     return res.status(200).json({success: true, message: 'This is protected'});
 });
 
-const PORT =process.env.PORT || 3000;
+app.get('/getUser', passport.authenticate('jwt', {session: false}), (req, res) => {
+    res.send(req.user);
+});
+
+const PORT =process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
